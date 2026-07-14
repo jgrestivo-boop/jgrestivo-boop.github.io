@@ -1,0 +1,4 @@
+Usage so far:
+- Supervised co-pilot in creating all the starter project files
+  and had it output README with steps of what it did
+-
