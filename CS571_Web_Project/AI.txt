@@ -1,4 +1,13 @@
-Usage so far:
+Usage so far: 95%
 - Supervised co-pilot in creating all the starter project files
   and had it output README with steps of what it did
--
+- Used co-pilot to create the initial set of pages and generate the HashRouter setup for me to those pages.
+  I specifically told it to hold off on implement functionality since I wanted to see a lot of the basic page layout first.
+  It actually generate a surprisingly cool My Info page which I didn't think about. Of course, the code it generate isn't well
+  modularized and is just a giant return statement.
+- I provided it with screenshot of Figma design so it could take it's best crack at mimicing the pages. I specified 
+  to use a design library of react-boostrap. It created an initial version of all the pages.
+- The About page really wasn't at all what I was envisioning so I went back and forth with it to place some text at the top
+  then two big cards with columns of 3 cards.
+- I engaged it to help me make the home page more engaging. It helped me brainstorm some ways to change the various taglines and text to make it
+  not sound AI generated!

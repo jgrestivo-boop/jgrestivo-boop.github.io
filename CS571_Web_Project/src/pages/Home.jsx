@@ -1,16 +1,76 @@
-import { Button, Stack } from 'react-bootstrap';
+import { Button, Card, Col, Row } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 
 function Home() {
   return (
-    <div>
-      <h1 className="display-6">Welcome to your React + Bootstrap starter</h1>
-      <p className="lead">
-        This app is client-only, uses React Router in declarative mode, and is ready to be deployed to GitHub Pages.
-      </p>
-      <Stack direction="horizontal" gap={2} className="flex-wrap">
-        <Button variant="primary">Primary action</Button>
-        <Button variant="outline-secondary">Secondary action</Button>
-      </Stack>
+    <div className="home-page">
+      <section className="hero section p-4 p-md-5 mb-5 home-hero">
+        <div className="hero-title-block">
+          <h1 className="display-3 hero-heading">Manasitrana Madagascar</h1>
+          <p className="lead text-muted hero-subtitle">
+            /mah-na-see-TRA-na/ — “a place of healing, hope, and community connection.”
+          </p>
+        </div>
+
+        <div className="hero-actions-block">
+          <p className="eyebrow text-success">Explore, Make a Difference, Change the World</p>
+          <div className="hero-buttons d-flex flex-column flex-sm-row gap-3 mt-4">
+            <Button as={NavLink} to="/visit" size="lg" variant="success">
+              Volunteer with us
+            </Button>
+            <Button as={NavLink} to="/projects" size="lg" variant="outline-primary">
+              Explore our projects
+            </Button>
+            <Button as={NavLink} to="/about" size="lg" variant="outline-dark">
+              Learn the story
+            </Button>
+          </div>
+        </div>
+
+        <div className="hero-panel mt-5">
+          <Card className="shadow-sm hero-summary-card border-0">
+            <Card.Body>
+              <Card.Title>Why Madagascar?</Card.Title>
+              <Card.Text>
+                Madagascar is home to communities with powerful resilience and urgent healthcare needs. Your support connects real people to medical care, training, and sustainable change.
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </div>
+      </section>
+
+      <Row xs={1} md={3} className="g-4">
+        <Col>
+          <Card className="shadow-sm border-0 home-card">
+            <Card.Body>
+              <Card.Title>Volunteers</Card.Title>
+              <Card.Text>
+                Help deliver care, build clinic capacity, and experience the impact of mission travel.
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col>
+          <Card className="shadow-sm border-0 home-card">
+            <Card.Body>
+              <Card.Title>Donors</Card.Title>
+              <Card.Text>
+                Fund sustainable healthcare projects that reach the most remote Malagasy communities.
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col>
+          <Card className="shadow-sm border-0 home-card">
+            <Card.Body>
+              <Card.Title>Travelers</Card.Title>
+              <Card.Text>
+                Discover meaningful travel that supports community wellness and local culture.
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
     </div>
   );
 }
