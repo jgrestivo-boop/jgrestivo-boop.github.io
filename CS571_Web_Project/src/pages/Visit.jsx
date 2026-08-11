@@ -21,6 +21,7 @@ function Visit({ visits, applications }) {
           return (
             <Col key={trip.id}>
               <Card className="shadow-sm border-0">
+                <Card.Img src={trip.image} alt={trip.title} className="visit-card-image" />
                 <Card.Body>
                   <div className="d-flex justify-content-between align-items-start mb-3">
                     <div>

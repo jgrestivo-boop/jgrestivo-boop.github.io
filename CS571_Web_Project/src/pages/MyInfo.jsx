@@ -8,6 +8,7 @@ function MyInfo({ profile, projects = [], visits = [], interestIds = [], applica
   const [showContact, setShowContact] = useState(false);
   const [showMailing, setShowMailing] = useState(false);
   const [editingInterests, setEditingInterests] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
   const [contactTitle, setContactTitle] = useState('');
   const [contactSubject, setContactSubject] = useState('');
   const [mailingEmail, setMailingEmail] = useState('');
@@ -91,11 +92,24 @@ function MyInfo({ profile, projects = [], visits = [], interestIds = [], applica
                     />
                   </Form.Group>
                   <Form.Group className="mb-3">
+                    <Form.Label>Volunteer status</Form.Label>
+                    <Form.Select
+                      value={draftProfile.status}
+                      onChange={(e) => setDraftProfile({ ...draftProfile, status: e.target.value })}
+                    >
+                      <option value="Not Interested">Not Interested</option>
+                      <option value="Interested">Interested</option>
+                    </Form.Select>
+                  </Form.Group>
+                  <Form.Group className="mb-3">
                     <Form.Label>Newsletter</Form.Label>
-                    <Form.Control
+                    <Form.Select
                       value={draftProfile.newsletter}
                       onChange={(e) => setDraftProfile({ ...draftProfile, newsletter: e.target.value })}
-                    />
+                    >
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>
+                    </Form.Select>
                   </Form.Group>
                   <div className="d-flex gap-2">
                     <Button variant="success" onClick={handleSaveProfile}>
@@ -143,7 +157,11 @@ function MyInfo({ profile, projects = [], visits = [], interestIds = [], applica
                 <Row xs={1} md={2} className="g-3">
                   {interestProjects.map((project) => (
                     <Col key={project.id}>
-                      <Card className="project-summary-card border-0 shadow-sm">
+                      <Card
+                        className="project-summary-card border-0 shadow-sm h-100"
+                        role="button"
+                        onClick={() => setSelectedProject(project)}
+                      >
                         <Card.Body>
                           <Card.Title>{project.title}</Card.Title>
                           <Card.Text>{project.summary}</Card.Text>
@@ -151,7 +169,10 @@ function MyInfo({ profile, projects = [], visits = [], interestIds = [], applica
                             <Button
                               size="sm"
                               variant="outline-danger"
-                              onClick={() => onRemoveInterest(project.id)}
+                              onClick={(event) => {
+                                event.stopPropagation();
+                                onRemoveInterest(project.id);
+                              }}
                             >
                               Remove interest
                             </Button>
@@ -210,6 +231,39 @@ function MyInfo({ profile, projects = [], visits = [], interestIds = [], applica
           </Card>
         </Col>
       </Row>
+
+      <Modal show={Boolean(selectedProject)} onHide={() => setSelectedProject(null)} centered size="lg">
+        <Modal.Header closeButton>
+          <Modal.Title>{selectedProject?.title}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <img src={selectedProject?.image} alt={selectedProject?.title} className="img-fluid rounded mb-3" />
+          <p>{selectedProject?.details}</p>
+          <h6>Impact highlights</h6>
+          <ul>
+            {selectedProject?.outcomes?.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setSelectedProject(null)}>
+            Close
+          </Button>
+          <Button
+            variant="outline-danger"
+            onClick={(event) => {
+              event.stopPropagation();
+              if (selectedProject) {
+                onRemoveInterest(selectedProject.id);
+                setSelectedProject(null);
+              }
+            }}
+          >
+            Remove from interests
+          </Button>
+        </Modal.Footer>
+      </Modal>
 
       <Card className="shadow-sm border-0">
         <Card.Body>

@@ -1,5 +1,6 @@
 import { Button, Card, Col, Row } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
+import heroImage from '../../assets/home-hero-eye.jpeg';
 
 function Home() {
   return (
@@ -14,6 +15,9 @@ function Home() {
 
         <div className="hero-actions-block">
           <p className="eyebrow text-success">Explore, Make a Difference, Change the World</p>
+          <div className="hero-visual mb-4">
+            <img src={heroImage} alt="A striking Madagascar landscape and community scene" className="hero-image" />
+          </div>
           <div className="hero-buttons d-flex flex-column flex-sm-row gap-3 mt-4">
             <Button as={NavLink} to="/visit" size="lg" variant="success">
               Volunteer with us
@@ -27,15 +31,11 @@ function Home() {
           </div>
         </div>
 
-        <div className="hero-panel mt-5">
-          <Card className="shadow-sm hero-summary-card border-0">
-            <Card.Body>
-              <Card.Title>Why Madagascar?</Card.Title>
-              <Card.Text>
-                Madagascar is home to communities with powerful resilience and urgent healthcare needs. Your support connects real people to medical care, training, and sustainable change.
-              </Card.Text>
-            </Card.Body>
-          </Card>
+        <div className="hero-summary-card shadow-sm mt-5 p-4">
+          <h2>Why Madagascar?</h2>
+          <p>
+            Madagascar is home to communities with powerful resilience and urgent healthcare needs. Your support connects real people to medical care, training, and sustainable change.
+          </p>
         </div>
       </section>
 

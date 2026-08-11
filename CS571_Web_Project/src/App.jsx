@@ -7,6 +7,12 @@ import Projects from './pages/Projects';
 import Visit from './pages/Visit';
 import MyInfo from './pages/MyInfo';
 import Application from './pages/Application';
+import clinicRenovationImage from '../assets/project-clinic-renovation.jpeg';
+import mobileHealthEducationImage from '../assets/project-mobile-health-education.jpeg';
+import childNutritionImage from '../assets/project-child-nutrition.jpeg';
+import antananarivoMissionImage from '../assets/visit-antananarivo-care-mission.jpeg';
+import mahajangaCampaignImage from '../assets/visit-mahajanga-hygiene-campaign.jpeg';
+import fianarantsoaNutritionImage from '../assets/visit-fianarantsoa-nutrition-tour.jpeg';
 
 const initialProjects = [
   {
@@ -19,7 +25,7 @@ const initialProjects = [
     details:
       'Our clinic renovation project improves patient safety, reduces infection risk, and brings reliable electricity to a rural health facility. Local health workers help lead the build and train technicians for ongoing maintenance.',
     outcomes: ['New treatment rooms', 'Solar lighting installed', 'Water filtration system added'],
-    image: 'https://via.placeholder.com/600x350?text=Clinic+Renovation',
+    image: clinicRenovationImage,
   },
   {
     id: 'mobile-health-education',
@@ -31,7 +37,7 @@ const initialProjects = [
     details:
       'This outreach program provided health education to more than 1,500 people, distributing hygiene kits and training local volunteers on sanitation and prenatal care. The curriculum was designed with Malagasy partners and translated into local languages.',
     outcomes: ['1,500+ people educated', '150 community volunteers trained', 'Hygiene kits distributed'],
-    image: 'https://via.placeholder.com/600x350?text=Health+Education',
+    image: mobileHealthEducationImage,
   },
   {
     id: 'child-nutrition',
@@ -43,7 +49,7 @@ const initialProjects = [
     details:
       'The child nutrition initiative focuses on early screening for malnutrition, dietary counseling, and follow-up care. We partner with local clinics and schools to keep children healthy and strengthen food security in the region.',
     outcomes: ['Nutrition screening events', 'Supplement distribution', 'Parent workshops held'],
-    image: 'https://via.placeholder.com/600x350?text=Child+Nutrition',
+    image: childNutritionImage,
   },
 ];
 
@@ -64,6 +70,7 @@ const initialVisits = [
       'Travelers should have routine vaccinations up to date, carry malaria prevention medication, bring sun protection, and prepare for warm days with occasional afternoon rain.',
     interests: ['Clinical care', 'Medical training', 'Community outreach'],
     cost: '$2,750 - $3,250',
+    image: antananarivoMissionImage,
     links: [
       { label: 'Packing checklist', url: 'https://example.com/packing-checklist' },
       { label: 'Health clearance guide', url: 'https://example.com/health-clearance' },
@@ -85,6 +92,7 @@ const initialVisits = [
       'Bring waterproof gear, mosquito protection, and be prepared for village travel. Consult a travel health provider for malaria prevention and ensure tetanus and routine immunizations are current.',
     interests: ['Public health', 'Community education', 'Field outreach'],
     cost: '$2,250 - $2,700',
+    image: mahajangaCampaignImage,
     links: [
       { label: 'Volunteer orientation', url: 'https://example.com/orientation' },
       { label: 'Community outreach materials', url: 'https://example.com/outreach-materials' },
@@ -106,6 +114,7 @@ const initialVisits = [
       'Travelers should pack lightweight clothing, malaria prevention, and any personal medications. A pre-trip visit with a health provider is recommended for recommended vaccinations and dietary preparation.',
     interests: ['Nutrition', 'Family education', 'Healthcare coaching'],
     cost: '$2,500 - $2,900',
+    image: fianarantsoaNutritionImage,
     links: [
       { label: 'Nutrition program outline', url: 'https://example.com/nutrition-program' },
       { label: 'Volunteer health checklist', url: 'https://example.com/health-checklist' },
@@ -160,8 +169,12 @@ function App() {
       <Navbar bg="dark" variant="dark" expand="lg" className="mb-4 shadow-sm">
         <Container>
           <Navbar.Brand as={NavLink} to="/" className="d-flex align-items-center gap-2">
-            <div className="logo-placeholder rounded bg-success d-flex align-items-center justify-content-center">
-              <span className="text-white fw-bold">Logo</span>
+            <div className="logo-placeholder rounded">
+              <div className="logo-flag-left" />
+              <div className="logo-flag-right">
+                <div className="logo-flag-top" />
+                <div className="logo-flag-bottom" />
+              </div>
             </div>
             Manasitran Madagascar
           </Navbar.Brand>
