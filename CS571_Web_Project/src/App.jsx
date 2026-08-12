@@ -14,13 +14,13 @@ import antananarivoMissionImage from '../assets/visit-antananarivo-care-mission.
 import mahajangaCampaignImage from '../assets/visit-mahajanga-hygiene-campaign.jpeg';
 import fianarantsoaNutritionImage from '../assets/visit-fianarantsoa-nutrition-tour.jpeg';
 
+// Seed data for the projects page. This keeps the app content centralized and easy to update.
 const initialProjects = [
   {
     id: 'clinic-renovation',
     title: 'Clinic Renovation',
     type: 'Infrastructure',
     location: 'Antananarivo',
-    status: 'Ongoing',
     summary: 'Upgrading a community clinic with new exam rooms, solar power, and clean water access.',
     details:
       'Our clinic renovation project improves patient safety, reduces infection risk, and brings reliable electricity to a rural health facility. Local health workers help lead the build and train technicians for ongoing maintenance.',
@@ -32,7 +32,6 @@ const initialProjects = [
     title: 'Mobile Health Education',
     type: 'Education',
     location: 'Mahajanga Region',
-    status: 'Completed',
     summary: 'Mobile training teams teach families hygiene, nutrition, and maternal care in remote villages.',
     details:
       'This outreach program provided health education to more than 1,500 people, distributing hygiene kits and training local volunteers on sanitation and prenatal care. The curriculum was designed with Malagasy partners and translated into local languages.',
@@ -44,7 +43,6 @@ const initialProjects = [
     title: 'Child Nutrition Initiative',
     type: 'Wellness',
     location: 'Fianarantsoa',
-    status: 'Active',
     summary: 'Supporting childhood nutrition through screenings, supplements, and parent education.',
     details:
       'The child nutrition initiative focuses on early screening for malnutrition, dietary counseling, and follow-up care. We partner with local clinics and schools to keep children healthy and strengthen food security in the region.',
@@ -53,6 +51,7 @@ const initialProjects = [
   },
 ];
 
+// Seed data for the mission opportunities and their detailed application flow.
 const initialVisits = [
   {
     id: 'mission-01',
@@ -122,6 +121,8 @@ const initialVisits = [
   },
 ];
 
+// Top-level app shell. It owns shared state for the user's profile, saved interests,
+// and submitted mission applications, then passes those values to the relevant pages.
 function App() {
   const [profile, setProfile] = useState({
     name: 'Jordan Restivo',
@@ -135,6 +136,7 @@ function App() {
   const [interests, setInterests] = useState(['clinic-renovation', 'child-nutrition']);
   const [applications, setApplications] = useState({});
 
+  // Update the saved profile data from the My Info page.
   const updateProfile = (changes) => {
     setProfile((previous) => ({
       ...previous,
@@ -142,6 +144,7 @@ function App() {
     }));
   };
 
+  // Add or remove project interest tags without mutating the source data.
   const toggleInterest = (projectId) => {
     setInterests((previous) =>
       previous.includes(projectId)
@@ -154,6 +157,7 @@ function App() {
     setInterests((previous) => previous.filter((id) => id !== projectId));
   };
 
+  // Store a mission submission so the application page and My Info page can show it later.
   const submitApplication = (visitId, applicationData) => {
     setApplications((previous) => ({
       ...previous,
@@ -176,7 +180,7 @@ function App() {
                 <div className="logo-flag-bottom" />
               </div>
             </div>
-            Manasitran Madagascar
+            Manasitrana Madagascar
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -184,7 +188,7 @@ function App() {
               <Nav.Link as={NavLink} to="/">Home</Nav.Link>
               <Nav.Link as={NavLink} to="/about">About</Nav.Link>
               <Nav.Link as={NavLink} to="/projects">Projects</Nav.Link>
-              <Nav.Link as={NavLink} to="/visit">Visit</Nav.Link>
+              <Nav.Link as={NavLink} to="/visit">Missions</Nav.Link>
               <Nav.Link as={NavLink} to="/my-info">My Info</Nav.Link>
             </Nav>
           </Navbar.Collapse>

@@ -2,25 +2,24 @@ import { Button, Card, Col, Row } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import heroImage from '../../assets/home-hero-eye.jpeg';
 
+// Landing page for the nonprofit. It introduces the mission, pushes users toward key actions,
+// and highlights the three main community roles visitors can take on.
 function Home() {
   return (
     <div className="home-page">
-      <section className="hero section p-4 p-md-5 mb-5 home-hero">
+      <section className="hero section p-4 p-md-5 mb-3 home-hero">
         <div className="hero-title-block">
           <h1 className="display-3 hero-heading">Manasitrana Madagascar</h1>
           <p className="lead text-muted hero-subtitle">
-            /mah-na-see-TRA-na/ — “a place of healing, hope, and community connection.”
+            /mah-na-see-TRA-na/ — “to free from illness, mend, or restore to health.”
           </p>
         </div>
 
         <div className="hero-actions-block">
           <p className="eyebrow text-success">Explore, Make a Difference, Change the World</p>
-          <div className="hero-visual mb-4">
-            <img src={heroImage} alt="A striking Madagascar landscape and community scene" className="hero-image" />
-          </div>
           <div className="hero-buttons d-flex flex-column flex-sm-row gap-3 mt-4">
             <Button as={NavLink} to="/visit" size="lg" variant="success">
-              Volunteer with us
+              Volunteer with Us
             </Button>
             <Button as={NavLink} to="/projects" size="lg" variant="outline-primary">
               Explore our projects
@@ -31,7 +30,11 @@ function Home() {
           </div>
         </div>
 
-        <div className="hero-summary-card shadow-sm mt-5 p-4">
+        <div className="hero-visual mb-4">
+          <img src={heroImage} alt="A striking Madagascar landscape and community scene" className="hero-image" />
+        </div>
+
+        <div className="hero-summary-card shadow-sm mt-0 p-4">
           <h2>Why Madagascar?</h2>
           <p>
             Madagascar is home to communities with powerful resilience and urgent healthcare needs. Your support connects real people to medical care, training, and sustainable change.

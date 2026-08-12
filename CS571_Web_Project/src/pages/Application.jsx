@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Badge, Button, Card, Col, Form, Row } from 'react-bootstrap';
 
+// Application form page for a specific mission trip. It collects interest information and submits
+// the data back to the app-level state so it can be shown in the My Info section.
 function Application({ visits, applications, onSubmitApplication }) {
   const { visitId } = useParams();
   const navigate = useNavigate();
@@ -14,6 +16,8 @@ function Application({ visits, applications, onSubmitApplication }) {
   const [interests, setInterests] = useState('');
   const [expertise, setExpertise] = useState('');
 
+  // If the user has already submitted this application, fill the form with the saved values so
+  // they can review or update the information instead of re-entering everything.
   useEffect(() => {
     if (applied) {
       const existing = applications[visitId];
@@ -39,6 +43,8 @@ function Application({ visits, applications, onSubmitApplication }) {
     );
   }
 
+  // The form submit step packages all of the input fields into a single saved application record,
+  // then redirects the user back to the mission list with a confirmation message.
   const handleSubmit = (event) => {
     event.preventDefault();
     onSubmitApplication(visitId, {
@@ -48,6 +54,7 @@ function Application({ visits, applications, onSubmitApplication }) {
       areasOfInterest: interests,
       areasOfExpertise: expertise,
     });
+    window.alert(`Application submitted for ${visit.title} mission trip!`);
     navigate('/visit');
   };
 

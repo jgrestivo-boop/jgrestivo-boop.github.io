@@ -1,56 +1,34 @@
 import { useState } from 'react';
-import { Badge, Button, Card, Col, ListGroup, Modal, Row } from 'react-bootstrap';
+import { Button, Card, Col, ListGroup, Modal, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import VisitCard from '../components/VisitCard';
+import SectionHeader from '../components/SectionHeader';
 
+// Mission listings page. It renders each volunteer trip card and opens a detailed modal for the
+// selected trip when a user wants more information before applying.
 function Visit({ visits, applications }) {
   const navigate = useNavigate();
   const [selectedTrip, setSelectedTrip] = useState(null);
 
   return (
     <div className="visit-page">
-      <div className="section mb-4">
-        <h1 className="section-title">Visit Madagascar</h1>
-        <p className="text-muted">
-          Our mission visits welcome volunteers, supporters, and medical professionals who want to make a direct impact.
-        </p>
-      </div>
+      <SectionHeader
+        title="Missions"
+        subtitle="Our mission visits welcome volunteers, supporters, and medical professionals who want to make a direct impact."
+      />
 
       <Row xs={1} md={2} className="g-4">
         {visits.map((trip) => {
           const applied = Boolean(applications[trip.id]);
+
           return (
             <Col key={trip.id}>
-              <Card className="shadow-sm border-0">
-                <Card.Img src={trip.image} alt={trip.title} className="visit-card-image" />
-                <Card.Body>
-                  <div className="d-flex justify-content-between align-items-start mb-3">
-                    <div>
-                      <Card.Title>{trip.title}</Card.Title>
-                      <Card.Subtitle className="text-muted">{trip.focus}</Card.Subtitle>
-                    </div>
-                    <Badge bg="warning" text="dark">
-                      {trip.schedule}
-                    </Badge>
-                  </div>
-                  <Card.Text>{trip.summary}</Card.Text>
-                  <div className="d-flex flex-wrap gap-2 mt-3">
-                    <Button
-                      size="sm"
-                      variant={applied ? 'secondary' : 'success'}
-                      disabled={applied}
-                      onClick={() => navigate(`/apply/${trip.id}`)}
-                    >
-                      {applied ? 'Applied' : 'Apply'}
-                    </Button>
-                    <Button size="sm" variant="outline-secondary" onClick={() => setSelectedTrip(trip)}>
-                      Learn more
-                    </Button>
-                  </div>
-                </Card.Body>
-                <Card.Footer className="bg-white border-top-0 text-muted">
-                  Estimated stay: {trip.estimate}
-                </Card.Footer>
-              </Card>
+              <VisitCard
+                trip={trip}
+                applied={applied}
+                onApply={() => navigate(`/apply/${trip.id}`)}
+                onLearnMore={() => setSelectedTrip(trip)}
+              />
             </Col>
           );
         })}
@@ -69,6 +47,8 @@ function Visit({ visits, applications }) {
         <Modal.Body>
           <Row>
             <Col md={8}>
+              <h5>Locations</h5>
+              <p>{selectedTrip?.locations?.join(', ')}</p>
               <h5>Description</h5>
               <p>{selectedTrip?.details}</p>
               <h5>Schedule & season</h5>
@@ -77,8 +57,6 @@ function Visit({ visits, applications }) {
                 <br />
                 <strong>Season:</strong> {selectedTrip?.season}
               </p>
-              <h5>Locations</h5>
-              <p>{selectedTrip?.locations?.join(', ')}</p>
             </Col>
             <Col md={4}>
               <Card className="shadow-sm mb-3">
