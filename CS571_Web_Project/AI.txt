@@ -1,4 +1,4 @@
-Usage so far: 97%
+Usage: 97%
 - Supervised co-pilot in creating all the starter project files
   and had it output README with steps of what it did
 - Used co-pilot to create the initial set of pages and generate the HashRouter setup for me to those pages.
@@ -9,3 +9,5 @@ Usage so far: 97%
   not sound AI generated!
 - I used it to make the basic functionality on all the different pages including modal pop-ups, adding projects interest list, and applying for a mission.
 - I guided input on functionality by critiquing its output and "usability" testing it to make further corrections
+- I added a lot of the basic informational content and had copilot review it and clean it up.
+- Pictures were all my own and I needed to manually specify them for a lot of the card components since Copilot doens't do great with "assign appropriate images"

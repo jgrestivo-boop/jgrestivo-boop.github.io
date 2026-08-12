@@ -80,7 +80,7 @@ const healthcareItems = [
     details:
       'Aid is delivered through clinic upgrades, supply distribution, and community-driven education programs.',
     more:
-      'We prioritize essential medicines, clean water access, and reliable facility improvements. Volunteers also support health education, maternal care, and preventive services that reduce long-term illness.',
+      'We prioritize essential medicines, clean water access, and reliable facility improvements. Volunteers also support health education, maternal care, and preventive services that reduce long-term illness. We are very involved with local maternity clinics in the Toamasina region, where obsetric and neonatal care is a critical need. Our work includes training local midwives, providing essential supplies, and improving clinic infrastructure to ensure safe deliveries and healthy outcomes for mothers and babies.',
     links: [
       { label: 'UNICEF - Health and nutrition in Madagascar', url: 'https://www.unicef.org/madagascar/health-and-nutrition' },
       { label: 'World Food Programme Madagascar', url: 'https://www.wfp.org/countries/madagascar' },
