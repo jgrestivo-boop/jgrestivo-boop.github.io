@@ -7,6 +7,7 @@ import aboutMissionImage from '../../assets/about-mission.jpeg';
 import aboutAidImage from '../../assets/about-aid.jpeg';
 import aboutWorkImage from '../../assets/about-work.jpeg';
 import missionCardImage from '../../assets/mission-card-image.jpeg';
+import hopitalybeambulance from '../../assets/hopitaly-be-ambulance.jpeg';
 
 // The About page is mostly content-driven. These arrays centralize the story copy so future content
 // edits are easy to maintain without touching the page layout logic.
@@ -74,7 +75,7 @@ const healthcareItems = [
   {
     id: 'Aid',
     title: 'Aid',
-    image: aboutAidImage,
+    image: hopitalybeambulance,
     blurb: 'Aid is delivered in ways that support both immediate care and long-term community resilience.',
     details:
       'Aid is delivered through clinic upgrades, supply distribution, and community-driven education programs.',
